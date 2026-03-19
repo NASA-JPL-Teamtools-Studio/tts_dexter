@@ -1,0 +1,47 @@
+[project]
+name = "tts-dexter"
+description = "Core implementation of Dexter."
+readme = "README.md"
+requires-python = ">=3.6"
+license = {text = "Unlicense"}
+authors = [
+  { name = "peper", email = "nicholas.peper@jpl.nasa.gov" },
+  { name = "muszynsk", email = "matt.muszynski@jpl.nasa.gov" },
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Unlicense",
+]
+dependencies = [
+  "pandas",
+  "pytest",
+  "tts-data-utils>=0.3.0,<1.0.0",
+  "tts-papertrail>=0.2.0,<1.0.0",
+  "tts-utilities>=0.2.1,<1.0.0",
+  "jpl-time>=1.4.5,<2.0.0",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/NASA-JPL-Teamtools-Studio/tts_dexter"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"
+
+[build-system]
+requires = [
+    "setuptools", 
+    "setuptools_scm",
+    "toml", 
+    "wheel", 
+    "tts-utilities>=0.2.1,<1.0.0"
+    ]
+build-backend = "setuptools.build_meta"
+

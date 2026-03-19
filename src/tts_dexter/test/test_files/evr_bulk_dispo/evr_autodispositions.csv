@@ -1,0 +1,5 @@
+﻿Name,Message Regex,Headline,Disposition Message,Condition,Special Handling
+MATCH_BY_EXACT_EVR_NAME,,Unexpected,This EVR's name has the exact name MATCH_BY_EXACT_EVR_NAME,nameMatch,
+MATCH_BY_EVR_NAME_REGEX_[A|B],,Unexpected,This EVR's name matches the regex MATCH_BY_EVR_NAME_REGEX_[A|B],nameRegex,
+MATCH_BY_EVR_NAME_WITH_MESSAGE_REGEX,Please.*match.*this.*message\.,Unexpected,This EVR's message matches the regex Please.*match.*this.*message\.,messageRegex,
+NAME_AND_REGEX_MATCH_[A|B],Please.*match.*this.*message\.,Unexpected,This EVR's name matches NAME_AND_REGEX_MATCH_[A|B] and its message matches the regex Please.*match.*this.*message\.,bothRegex,
