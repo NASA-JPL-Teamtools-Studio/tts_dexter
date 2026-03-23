@@ -1,6 +1,6 @@
 # Dexter: Disposition Exemplar for Transpire, EVRs, Rounds, and more
 
-![Project logo](https://github.com/NASA-JPL-Teamtools-Studio/blob/main/docs/images/tts_image_artifacts/dexter.png)
+![Project logo](https://github.com/NASA-JPL-Teamtools-Studio/teamtools_documentation/blob/main/docs/images/tts_image_artifacts/dexter.png)
 
 ## About Teamtools Studio
 
