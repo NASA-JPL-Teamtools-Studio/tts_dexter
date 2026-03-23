@@ -1,0 +1,82 @@
+Metadata-Version: 2.4
+Name: tts-dexter
+Version: 0.3.2
+Summary: Core implementation of Dexter.
+Author: peper
+Author-email: peper <nicholas.peper@jpl.nasa.gov>, muszynsk <matt.muszynski@jpl.nasa.gov>
+License: Unlicense
+Project-URL: Homepage, https://github.com/NASA-JPL-Teamtools-Studio/tts_dexter
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Unlicense
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+Requires-Dist: pytest
+Requires-Dist: tts-data-utils<1.0.0,>=0.3.0
+Requires-Dist: tts-papertrail<1.0.0,>=0.2.0
+Requires-Dist: tts-utilities<1.0.0,>=0.2.1
+Requires-Dist: jpl-time<2.0.0,>=1.4.5
+Dynamic: author
+Dynamic: requires-python
+
+# Dexter: Disposition Exemplar for Transpire, EVRs, Rounds, and more
+
+![Project logo](https://github.com/NASA-JPL-Teamtools-Studio/blob/main/docs/images/tts_image_artifacts/dexter.png)
+
+## About Teamtools Studio
+
+Teamtools Studio Utilities is part of JPL's Teamtools Studio (TTS).
+
+TTS is an effort originated in JPL's Planning and Execution section to centralize shared repositories across missions. This benefits JPL by reducing cost through reducing duplicated code, collaborating across missions, and unifying standards for development and design across JPL.
+
+Although Planning and Execution is primarily concerned with flight operations, the TTS suite has been generalized and atomized to the point where many of these tools are applicable during other mission phases and even in non-spaceflight contexts. Through our work flying space missions, we hope to provide tools to the open source community that have utility in data analysis or planning for any complex system where failure is not an option.
+
+For more infomation on how to contribute, and how these libraries form a complete ecosystem for high reliability data analysis, see the [Full TTS Documentation](https://nasa-jpl-teamtools-studio.github.io/teamtools-documentation/).
+
+## What is Dexter?
+
+### Overview
+
+Dexter is a solution to the "last mile" problem of dispositioning spacecraft behavior, althought it is generalized
+enough that it could be applied to any complex system.
+
+The question of whether a spacecraft is performing nominally is answered by a chain of distributed systems. Some
+is managed by onboard Fault Protection, some by spacecraft log messages like EVRs that have associated severities,
+some by alarm limits applied by ground tools, and some by humans.
+
+Dexter is meant to be an engine for the last category described above (although it could also be an alarm limit engine).
+
+Dexter is built to consume spacecraft data, planning information, and any other data inputs needed to confirm spacecraft
+safety on the ground, combine them into dispositions, and report out which dispositionable entities need more attention
+and which can safely be ignored.
+
+Often on day 1 of a new flight project, little is implemented in Dexter, but teams are also very large compared to their
+steady state size once the spacecraft is stable. Dexter is mean to be flexible enough to grow as the team's knowledge of
+the system grows and common disposition patterns are recocognized. This facilitates the shrinking of the team as the
+mission ages and is given less and less money with each extended mission.
+
+A key concept for Dexter is the "dispositionable". This name is slightly obtuse because it is meant to be very general.
+Dispositionables are entities that can be dispositioned. This may include spacecraft alarm violations, warning log messages,
+the latest value of a time-series data point, or the latest arrival time of a particular data prodcut. However, 
+the concept of dispositionables is open ended, and can be used for anything a Dexter developer desires. They should be though
+of simply as discrete events that need analysis in order to decide if they are benign or need more attention in the way of
+anomaly repsonse.
+
+
+### Projects Currently Supported
+
+* Europa Clipper
+* Mars 2020/Perseverance
+* Mars Sample Return/Sample Retrieval Lander
+* NISAR
+
+## Architecture
+
+### TTS dependencies
+
+* TTS Utilities
+* Data Utilities
+* Papertrail
+
+
+* None

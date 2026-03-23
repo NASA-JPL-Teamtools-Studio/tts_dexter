@@ -1,0 +1,540 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tts_dexter.core &mdash; tts-dexter 0.3.3.dev0+g536ca35a5.d20260323 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/bugfix.css?v=aa86f000" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8370daf7"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="tts_dexter.dispositioners" href="tts_dexter.dispositioners.html" />
+    <link rel="prev" title="tts_dexter" href="tts_dexter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            tts-dexter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="tts_dexter.html">tts_dexter</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tts_dexter.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">tts_dexter.core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tts_dexter.dispositioners.html">tts_dexter.dispositioners</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">tts-dexter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="tts_dexter.html">tts_dexter</a></li>
+      <li class="breadcrumb-item active">tts_dexter.core</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-tts_dexter.core">
+<span id="tts-dexter-core"></span><h1>tts_dexter.core<a class="headerlink" href="#module-tts_dexter.core" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+<section id="module-tts_dexter.core.data">
+<span id="tts-dexter-core-data"></span><h3>tts_dexter.core.data<a class="headerlink" href="#module-tts_dexter.core.data" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_dexter.core.data.DISPO_CHOICE">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_dexter.core.data.</span></span><span class="sig-name descname"><span class="pre">DISPO_CHOICE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.data.DISPO_CHOICE" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enumeration defining strategies for selecting which disposition to display 
+when multiple dispositions are generated for a single data item.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.data.DISPO_CHOICE.ALL">
+<span class="sig-name descname"><span class="pre">ALL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#tts_dexter.core.data.DISPO_CHOICE.ALL" title="Link to this definition"></a></dt>
+<dd><p>Include all generated dispositions in the output.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.data.DISPO_CHOICE.FIRST">
+<span class="sig-name descname"><span class="pre">FIRST</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#tts_dexter.core.data.DISPO_CHOICE.FIRST" title="Link to this definition"></a></dt>
+<dd><p>Select only the first disposition generated.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.data.DISPO_CHOICE.LAST">
+<span class="sig-name descname"><span class="pre">LAST</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#tts_dexter.core.data.DISPO_CHOICE.LAST" title="Link to this definition"></a></dt>
+<dd><p>Select only the last disposition generated.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.data.DISPO_CHOICE.SEVERITY">
+<span class="sig-name descname"><span class="pre">SEVERITY</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#tts_dexter.core.data.DISPO_CHOICE.SEVERITY" title="Link to this definition"></a></dt>
+<dd><p>Select the single disposition with the highest severity level.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tts_dexter.core.dexter">
+<span id="tts-dexter-core-dexter"></span><h3>tts_dexter.core.dexter<a class="headerlink" href="#module-tts_dexter.core.dexter" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_dexter.core.dexter.Dexter">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_dexter.core.dexter.</span></span><span class="sig-name descname"><span class="pre">Dexter</span></span><a class="headerlink" href="#tts_dexter.core.dexter.Dexter" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">InvulnerableDataManager</span></code></p>
+<p>The central management class for the Dexter automation framework.</p>
+<p>Inherits from InvulnerableDataManager to provide separate fault tolerance
+for each individual test.
+This class is responsible for orchestrating the workflow of loading data,
+initializing specific disposition logic (via Dispositioners), executing those
+dispositions, and finally stamping the results back onto the data containers.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>DISPO_CHOICE (DISPO_CHOICE): The default strategy for selecting dispositions (e.g., ALL).
+DISPO_FORMAT (DISPO_FORMAT): The default format for outputting dispositions (e.g., HTML).
+DISPO_DEFAULT (Disposition): The default disposition to apply when no specific rule matches.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dexter.Dexter.DISPO_CHOICE">
+<span class="sig-name descname"><span class="pre">DISPO_CHOICE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#tts_dexter.core.dexter.Dexter.DISPO_CHOICE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dexter.Dexter.DISPO_DEFAULT">
+<span class="sig-name descname"><span class="pre">DISPO_DEFAULT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;tts_dexter.core.dispo.Disposition</span> <span class="pre">object&gt;</span></span><a class="headerlink" href="#tts_dexter.core.dexter.Dexter.DISPO_DEFAULT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dexter.Dexter.DISPO_FORMAT">
+<span class="sig-name descname"><span class="pre">DISPO_FORMAT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#tts_dexter.core.dexter.Dexter.DISPO_FORMAT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dexter.Dexter.disposition_all">
+<span class="sig-name descname"><span class="pre">disposition_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dexter.Dexter.disposition_all" title="Link to this definition"></a></dt>
+<dd><p>Executes the disposition logic for all registered dispositioners.</p>
+<p>Iterates through the list of initialized dispositioners and calls their
+<cite>do_dispositions</cite> method to evaluate rules against the loaded data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dexter.Dexter.init_dispositioner">
+<span class="sig-name descname"><span class="pre">init_dispositioner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dispositioner_cls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dexter.Dexter.init_dispositioner" title="Link to this definition"></a></dt>
+<dd><p>Instantiates and registers a new dispositioner.</p>
+<p>This method safely attempts to create an instance of the provided
+dispositioner class using <cite>exec_invulnerable</cite>. If successful, the
+instance is added to the internal list of active dispositioners.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>dispositioner_cls (class): The class of the dispositioner to initialize.</dt><dd><p>Must accept the Dexter instance as an argument.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dexter.Dexter.stamp_all">
+<span class="sig-name descname"><span class="pre">stamp_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dexter.Dexter.stamp_all" title="Link to this definition"></a></dt>
+<dd><p>Applies the final dispositions to the data records.</p>
+<p>Iterates through all data containers managed by this Dexter instance and
+triggers their <cite>stamp_all</cite> method to format and attach the calculated
+dispositions (and severity statuses) to the individual data items.</p>
+<p>Stamps can be configured to show all disosition statuses, only the
+latest, only the first, or only the most severe.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tts_dexter.core.dispo">
+<span id="tts-dexter-core-dispo"></span><h3>tts_dexter.core.dispo<a class="headerlink" href="#module-tts_dexter.core.dispo" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_FORMAT">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_dexter.core.dispo.</span></span><span class="sig-name descname"><span class="pre">DISPO_FORMAT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_FORMAT" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enumeration of supported output formats for dispositions.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_FORMAT.EXCEL">
+<span class="sig-name descname"><span class="pre">EXCEL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_FORMAT.EXCEL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_FORMAT.HTML">
+<span class="sig-name descname"><span class="pre">HTML</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_FORMAT.HTML" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_FORMAT.TEXT">
+<span class="sig-name descname"><span class="pre">TEXT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_FORMAT.TEXT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_SEVERITY">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_dexter.core.dispo.</span></span><span class="sig-name descname"><span class="pre">DISPO_SEVERITY</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_SEVERITY" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enumeration of disposition severity levels.</p>
+<p>Automatically configures default text and background colors based on the 
+severity name upon initialization.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_SEVERITY.CRITICAL">
+<span class="sig-name descname"><span class="pre">CRITICAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_SEVERITY.CRITICAL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_SEVERITY.HIGH">
+<span class="sig-name descname"><span class="pre">HIGH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_SEVERITY.HIGH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_SEVERITY.LOW">
+<span class="sig-name descname"><span class="pre">LOW</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_SEVERITY.LOW" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_SEVERITY.MEDIUM">
+<span class="sig-name descname"><span class="pre">MEDIUM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_SEVERITY.MEDIUM" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_SEVERITY.NONE">
+<span class="sig-name descname"><span class="pre">NONE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_SEVERITY.NONE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_SEVERITY.UNKNOWN">
+<span class="sig-name descname"><span class="pre">UNKNOWN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_SEVERITY.UNKNOWN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_SEVERITY.VERY_HIGH">
+<span class="sig-name descname"><span class="pre">VERY_HIGH</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_SEVERITY.VERY_HIGH" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.DISPO_SEVERITY.VERY_LOW">
+<span class="sig-name descname"><span class="pre">VERY_LOW</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></span><a class="headerlink" href="#tts_dexter.core.dispo.DISPO_SEVERITY.VERY_LOW" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_dexter.core.dispo.</span></span><span class="sig-name descname"><span class="pre">Disposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Represents a single disposition outcome, including text content, severity, and styling.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.benign">
+<span class="sig-name descname"><span class="pre">benign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.benign" title="Link to this definition"></a></dt>
+<dd><p>Sets the disposition to Benign (LOW severity).</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.color">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.color" title="Link to this definition"></a></dt>
+<dd><p>The text color for the disposition.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.critical">
+<span class="sig-name descname"><span class="pre">critical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.critical" title="Link to this definition"></a></dt>
+<dd><p>Sets the disposition to Critical (VERY_HIGH severity).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.custom">
+<span class="sig-name descname"><span class="pre">custom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.custom" title="Link to this definition"></a></dt>
+<dd><p>Sets a custom disposition by mapping a headline string to a predefined severity method.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>headline (str): One of ‘Nominal’, ‘Expected’, ‘Benign’, ‘Ops Check’, or ‘Unexpected’.
+text (str): The disposition message.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If the headline is not one of the valid options.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.expected">
+<span class="sig-name descname"><span class="pre">expected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.expected" title="Link to this definition"></a></dt>
+<dd><p>Sets the disposition to Expected (LOW severity).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.format">
+<span class="sig-name descname"><span class="pre">format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dispo_format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.format" title="Link to this definition"></a></dt>
+<dd><p>Formats the disposition string for the specified output format.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>dispo_format (DISPO_FORMAT): The desired output format.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str or List[RichText]: The formatted disposition.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If the format is not supported.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.format_excel">
+<span class="sig-name descname"><span class="pre">format_excel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.format_excel" title="Link to this definition"></a></dt>
+<dd><p>Formats the disposition as a list of RichText objects for Excel export.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.format_html">
+<span class="sig-name descname"><span class="pre">format_html</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.format_html" title="Link to this definition"></a></dt>
+<dd><p>Formats the disposition as an HTML string with inline styles.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.format_text">
+<span class="sig-name descname"><span class="pre">format_text</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.format_text" title="Link to this definition"></a></dt>
+<dd><p>Formats the disposition as a plain text string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.from_definition">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_definition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">severity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.from_definition" title="Link to this definition"></a></dt>
+<dd><p>Factory method to create and populate a Disposition instance.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>headline (str): The disposition headline.
+text (str): The disposition text.
+severity (DISPO_SEVERITY): The severity level.
+color (str or PALETTE, optional): Text color.
+bg_color (str or PALETTE, optional): Background color.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Disposition: A populated Disposition object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.nominal">
+<span class="sig-name descname"><span class="pre">nominal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.nominal" title="Link to this definition"></a></dt>
+<dd><p>Sets the disposition to Nominal (NONE severity).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.ops_check">
+<span class="sig-name descname"><span class="pre">ops_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.ops_check" title="Link to this definition"></a></dt>
+<dd><p>Sets the disposition to Ops Check (UNKNOWN severity).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.populate">
+<span class="sig-name descname"><span class="pre">populate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">headline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">severity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bg_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.populate" title="Link to this definition"></a></dt>
+<dd><p>Populates the disposition with specific details.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>headline (str): The short summary or title of the disposition (e.g., “Unexpected”).
+text (str): The detailed explanation of the disposition.
+severity (DISPO_SEVERITY): The severity level associated with this finding.
+bg_color (str or PALETTE, optional): Background color override.
+color (str or PALETTE, optional): Text color override.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If the disposition has already been populated.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.populated">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">populated</span></span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.populated" title="Link to this definition"></a></dt>
+<dd><p>bool: True if the disposition has been set, False otherwise.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Disposition.unexpected">
+<span class="sig-name descname"><span class="pre">unexpected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Disposition.unexpected" title="Link to this definition"></a></dt>
+<dd><p>Sets the disposition to Unexpected (HIGH severity).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Dispositioner">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_dexter.core.dispo.</span></span><span class="sig-name descname"><span class="pre">Dispositioner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dex</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Dispositioner" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for defining groups of disposition logic.</p>
+<p>Subclasses should implement specific disposition methods decorated with 
+<cite>&#64;dispo_method</cite>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.Dispositioner.do_dispositions">
+<span class="sig-name descname"><span class="pre">do_dispositions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.Dispositioner.do_dispositions" title="Link to this definition"></a></dt>
+<dd><p>Executes all approved disposition methods defined in this class.</p>
+<p>Iterates over the class methods, checks for the <cite>_is_approved_disposition</cite>
+attribute set by the <cite>&#64;dispo_method</cite> decorator, and runs them.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.PALETTE">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">tts_dexter.core.dispo.</span></span><span class="sig-name descname"><span class="pre">PALETTE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.PALETTE" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enumeration of standard color codes used for disposition output styling.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.PALETTE.BLACK">
+<span class="sig-name descname"><span class="pre">BLACK</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'#000000'</span></span><a class="headerlink" href="#tts_dexter.core.dispo.PALETTE.BLACK" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.PALETTE.GREEN">
+<span class="sig-name descname"><span class="pre">GREEN</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'#68BC00'</span></span><a class="headerlink" href="#tts_dexter.core.dispo.PALETTE.GREEN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.PALETTE.NO_COLOR">
+<span class="sig-name descname"><span class="pre">NO_COLOR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'N/A'</span></span><a class="headerlink" href="#tts_dexter.core.dispo.PALETTE.NO_COLOR" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.PALETTE.ORANGE">
+<span class="sig-name descname"><span class="pre">ORANGE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'#FE9200'</span></span><a class="headerlink" href="#tts_dexter.core.dispo.PALETTE.ORANGE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.PALETTE.PURPLE">
+<span class="sig-name descname"><span class="pre">PURPLE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'#AD44AD'</span></span><a class="headerlink" href="#tts_dexter.core.dispo.PALETTE.PURPLE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.PALETTE.RED">
+<span class="sig-name descname"><span class="pre">RED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'#FF6347'</span></span><a class="headerlink" href="#tts_dexter.core.dispo.PALETTE.RED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.PALETTE.WHITE">
+<span class="sig-name descname"><span class="pre">WHITE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'#FFFFFF'</span></span><a class="headerlink" href="#tts_dexter.core.dispo.PALETTE.WHITE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.PALETTE.YELLOW">
+<span class="sig-name descname"><span class="pre">YELLOW</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'#FCC400'</span></span><a class="headerlink" href="#tts_dexter.core.dispo.PALETTE.YELLOW" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.dispo_method">
+<span class="sig-prename descclassname"><span class="pre">tts_dexter.core.dispo.</span></span><span class="sig-name descname"><span class="pre">dispo_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">required</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optional</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">approved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.dispo_method" title="Link to this definition"></a></dt>
+<dd><p>Decorator to register a method as an automated disposition logic unit.</p>
+<p>Handles retrieving necessary data containers from Dexter and passing them
+to the decorated method. Wraps execution in <cite>invulnerable</cite> to prevent
+single-failure crashes.</p>
+<dl>
+<dt>Args:</dt><dd><p>required (list[str]): List of data container names required for this disposition.
+optional (list[str], optional): List of optional data container names.
+batch (str, optional): The name of the specific batcher to use. If None, uses all input data.
+approved (bool, optional): Flag indicating if this disposition is approved for execution.</p>
+<blockquote>
+<div><p>Defaults to True.</p>
+</div></blockquote>
+</dd>
+<dt>Returns:</dt><dd><p>function: The wrapped function ready for execution by Dexter.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tts_dexter.core.dispo.get_dispo_joiner">
+<span class="sig-prename descclassname"><span class="pre">tts_dexter.core.dispo.</span></span><span class="sig-name descname"><span class="pre">get_dispo_joiner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dispo_format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tts_dexter.core.dispo.get_dispo_joiner" title="Link to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Returns the appropriate string separator for joining multiple dispositions.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>dispo_format (DISPO_FORMAT): The target output format.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: ‘&lt;br&gt;’ for HTML, ‘</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>‘ for TEXT/EXCEL.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Raises:</dt><dd><p>ValueError: If the dispo_format is not recognized.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tts_dexter.html" class="btn btn-neutral float-left" title="tts_dexter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tts_dexter.dispositioners.html" class="btn btn-neutral float-right" title="tts_dexter.dispositioners" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 JPL.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
