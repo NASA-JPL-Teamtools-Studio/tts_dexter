@@ -15,6 +15,7 @@ classifiers = [
 dependencies = [
   "pandas",
   "pytest",
+  "tts-dante>=0.3.3,<1.0.0",
   "tts-data-utils>=0.3.0,<1.0.0",
   "tts-papertrail>=0.2.0,<1.0.0",
   "tts-utilities>=0.2.1,<1.0.0",
