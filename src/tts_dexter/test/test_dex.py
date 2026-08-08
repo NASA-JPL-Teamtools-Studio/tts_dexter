@@ -6,6 +6,7 @@ from tts_data_utils.invulnerable_data_manager.utilities import set_global_invuln
 
 from tts_data_utils.core.data_item import DataItem
 from tts_data_utils.core.data_container import DataContainer
+from tts_data_utils.core.data_frame import TtsDataFrame
 
 from tts_dexter.core.dexter import Dexter
 from tts_dexter.core.dispo import Dispositioner, Disposition, dispo_method
@@ -151,3 +152,67 @@ def test_invulnerable():
     clear_global_invulnerable()
     assert True
 
+def test_dex_stamp_to_outputs(dex_basic_dispositionable):
+    # Run dispositions first so stamp_all has something to stamp
+    dex_basic_dispositionable.disposition_all()
+
+    outputs = dex_basic_dispositionable.stamp_all_to_outputs()
+
+    # Outputs should be populated
+    assert outputs
+    # all_output_data is an AllDataBatch; ensure its internal map is non-empty
+    assert dex_basic_dispositionable.all_output_data.data_map
+
+    # Original inputs still exist and are distinct objects
+    input_container = dex_basic_dispositionable.get_input_data("test_data")
+    output_container = dex_basic_dispositionable.get_output_data("test_data")
+    assert input_container is not output_container
+
+    # Output container should have dispositions stamped
+    # We don't assert specific string formatting here, just presence
+    assert any("disposition" in r.source for r in output_container.records)
+
+
+@pytest.mark.unreviewed_ai_generated_test
+def test_dex_with_tts_dataframe_rows():
+    """Dexter can operate on a TtsDataFrame input via stamp_all_to_outputs.
+
+    Builds a small frame, registers it on Dexter's all_input_data, runs a
+    dispositioner that uses TtsRowSeries/DexterRowMixin row methods, then
+    verifies stamp_all_to_outputs produces a separate stamped frame.
+    """
+    class FrameForDex(TtsDataFrame):
+        pass
+
+    times = [Time('2000-001T12:00:00') + Duration(f'00:00:0{i}') for i in range(3)]
+    data = [
+        {"time": times[0], "label": "a", "value": 1.0},
+        {"time": times[1], "label": "a", "value": 2.0},
+        {"time": times[2], "label": "b", "value": 3.0},
+    ]
+    frame = FrameForDex(data, coerce=False, validate=False)
+
+    dex = Dexter()
+    input_name = "frame_data"
+    dex.all_input_data.set_data_one(input_name, frame)
+
+    class _FrameDispositioner(Dispositioner):
+        @dispo_method([input_name])
+        def mark_all_ok(self, df):
+            for _, row in df.iterrows():
+                row.new_dispo().expected("OK")
+
+    dex.init_dispositioner(_FrameDispositioner)
+    dex.disposition_all()
+
+    outputs = dex.stamp_all_to_outputs()
+
+    assert input_name in outputs
+    out_frame = outputs[input_name]
+
+    # Input and output must be distinct objects
+    assert out_frame is not frame
+
+    # Disposition column should exist and be populated for all rows
+    assert "disposition" in out_frame.columns
+    assert out_frame["disposition"].notna().all()

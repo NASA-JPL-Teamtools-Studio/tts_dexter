@@ -5,6 +5,9 @@ import pdb
 from decimal import Decimal
 import decimal
 
+import pandas as pd
+
+from tts_data_utils.core.data_frame import TtsDataFrame
 from tts_dexter.core.dispo import Dispositioner, dispo_method
 
 ALLOWABLE_TYPES_BY_CONDITION = {
@@ -92,4 +95,129 @@ class LadEhaDispositioner(Dispositioner):
                 chanval.new_dispo().custom(chanval['Headline (True)'], chanval['Disposition Message (True)'])
             else:
                 chanval.new_dispo().custom(chanval['Headline (False)'], chanval['Disposition Message (False)'])
+
+
+class DfLadEhaDispositioner(Dispositioner):
+    """
+    DataFrame-aware dispositioner for Latest Available Data (LAD) EHA.
+
+    Operates on a TtsDataFrame registered under the ``'lad_frame'`` data key.
+    Each row must already contain merged autodisposition rules and actual chanval
+    data (see :func:`make_lad_frame` in the test helpers).
+
+    Applies the same comparison logic as :class:`LadEhaDispositioner` but
+    iterates via ``TtsRowSeries`` rows so ``new_dispo()`` writes back to the
+    parent frame through the standard ``DexterRowMixin`` contract.
+    """
+    HANDLER_MAP = {}
+
+    @dispo_method(['lad_frame'])
+    def dispo_from_frame(self, frame):
+        for _, row in frame.iterrows():
+            tol_raw = row['Tolerance']
+            if pd.isna(tol_raw) or tol_raw == '':
+                tolerance = Decimal(0)
+            else:
+                tolerance = Decimal(str(tol_raw))
+
+            condition = row['Condition']
+            data_type = row['Data Type']
+
+            if condition not in ALLOWABLE_TYPES_BY_CONDITION:
+                raise Exception(f"Condition type \"{condition}\" not understood.")
+            if data_type not in ALLOWABLE_TYPES_BY_CONDITION[condition]:
+                raise Exception(f"Data type \"{data_type}\" not allowed for condition \"{condition}\".")
+
+            actual_raw = row['Actual Value']
+            if actual_raw == 'Not Present':
+                row.new_dispo().custom('Ops Check', 'Chanval Not Present')
+                continue
+
+            try:
+                actual_value = Decimal(str(actual_raw))
+            except decimal.InvalidOperation:
+                actual_value = actual_raw
+
+            expected_raw = row['Expected Value']
+            try:
+                expected_value = Decimal(str(expected_raw))
+            except decimal.InvalidOperation:
+                expected_value = expected_raw
+
+            if condition == 'range':
+                bounds = expected_value[0] + expected_value[-1]
+                expected_value = [Decimal(x) for x in expected_value[1:-1].split(',')]
+                comparison = COMPARITORS[condition](actual_value, expected_value, tolerance, bounds)
+            elif condition == 'eq' and data_type.lower() in ['status', 'dnstr']:
+                comparison = COMPARITORS['str_eq'](actual_value, expected_value)
+            elif condition == 'ne' and data_type.lower() in ['status', 'dnstr']:
+                comparison = COMPARITORS['str_ne'](actual_value, expected_value)
+            else:
+                comparison = COMPARITORS[condition](actual_value, expected_value, tolerance)
+
+            if comparison:
+                row.new_dispo().custom(row['Headline (True)'], row['Disposition Message (True)'])
+            else:
+                row.new_dispo().custom(row['Headline (False)'], row['Disposition Message (False)'])
+
+
+class DfCsvLadEhaDispositioner(DfLadEhaDispositioner):
+    """
+    Extension of DfLadEhaDispositioner that knows how to build its own merged
+    frame from a rules CSV and a raw actuals frame.
+
+    Subclasses may override ``NAME_COL``, ``EU_COL``, and ``DN_COL`` to match
+    the column names used by their telemetry query layer.
+
+    Usage::
+
+        frame = MyDispositioner.build_frame(snapshot_csv, lad_chanvals)
+        dex.all_input_data.set_data_one('lad_frame', frame)
+    """
+    NAME_COL = 'name'
+    EU_COL   = 'value'
+    DN_COL   = 'raw_value'
+
+    @classmethod
+    def build_frame(cls, snapshot_csv, actuals_frame):
+        """Merge a rules CSV with actual chanvals into a disposition-ready TtsDataFrame.
+
+        Parameters
+        ----------
+        snapshot_csv : str or Path
+            Procedure step CSV defining expected-value rules.  Must contain
+            columns ``Channel ID``, ``Data Type``, ``Condition``,
+            ``Expected Value``, ``Tolerance``, ``Headline (True)``,
+            ``Disposition Message (True)``, ``Headline (False)``,
+            ``Disposition Message (False)``.
+        actuals_frame : DataFrame-like
+            Telemetry frame whose column names match ``cls.NAME_COL``,
+            ``cls.EU_COL``, and ``cls.DN_COL``.  One row per channel
+            (LAD query result).
+
+        Returns
+        -------
+        TtsDataFrame
+            Merged frame ready to be registered on a Dexter instance as
+            ``'lad_frame'`` and passed to this dispositioner.
+        """
+        rules = pd.read_csv(snapshot_csv, dtype=str, keep_default_na=False)
+        actuals = pd.DataFrame({
+            '_name': list(actuals_frame[cls.NAME_COL]),
+            '_eu':   list(actuals_frame[cls.EU_COL]),
+            '_dn':   list(actuals_frame[cls.DN_COL]),
+        })
+        merged = rules.merge(actuals, left_on='Channel ID', right_on='_name', how='left')
+
+        def _resolve(row):
+            if pd.isna(row.get('_name')):
+                return 'Not Present'
+            dtype = str(row.get('Data Type', '')).lower()
+            v = row.get('_dn') if dtype == 'dn' else row.get('_eu')
+            if v is None or (not isinstance(v, str) and pd.isna(v)):
+                return 'Not Present'
+            return v
+
+        merged['Actual Value'] = merged.apply(_resolve, axis=1)
+        return TtsDataFrame(merged, coerce=False, validate=False)
 

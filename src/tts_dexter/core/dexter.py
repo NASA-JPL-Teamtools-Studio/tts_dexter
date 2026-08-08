@@ -90,6 +90,40 @@ class Dexter(InvulnerableDataManager):
 
         Stamps can be configured to show all disosition statuses, only the
         latest, only the first, or only the most severe.
+
+        TO DO: Determine if we can remove this now that we've written stamp_all_to_outputs, which 
+        added to enable a new strategy where we no longer edit inputs in place and instead
+        make copies of them to be output. TBD whether some users will want to keep the old
+        structure and others will take the new, but this might be retained for legacy reasons.
         """
         for container in self.all_input_data.data_map.values():
             container.stamp_all(self.dispo_choice, self.dispo_format)
+
+    def stamp_all_to_outputs(self):
+        """Copy-on-stamp variant of :meth:[stamp_all](cci:1://file:///Users/muszynsk/projects/tt_studio/dev/tts_core/tts_dexter/src/tts_dexter/core/dexter.py:82:4-94:69).
+
+        For each input container/frame, this method:
+
+        - creates a copy of the input data,
+        - applies row-level stamping on the copy using the current
+          ``dispo_choice`` and ``dispo_format``, and
+        - registers the stamped copy in :attr:[all_output_data](cci:1://file:///Users/muszynsk/projects/tt_studio/dev/tts_core/tts_data_utils/src/tts_data_utils/invulnerable_data_manager/invulnerable_data_manager.py:95:4-98:36) under the
+          same name.
+
+        The original input containers/frames are left unmodified.
+        """
+
+        outputs = {}
+        for name, container in self.all_input_data.data_map.items():
+            # DataContainer has a custom _copy() that preserves history/metadata
+            if hasattr(container, "_copy"):
+                stamped = container._copy()
+            else:
+                # TtsDataFrame and other pandas-like types should implement copy()
+                stamped = container.copy()
+
+            stamped.stamp_all(self.dispo_choice, self.dispo_format)
+            self.all_output_data.set_data_one(name, stamped)
+            outputs[name] = stamped
+
+        return outputs            

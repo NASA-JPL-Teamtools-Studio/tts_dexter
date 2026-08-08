@@ -3,7 +3,7 @@ from pathlib import Path
 import re
 import pdb
 
-from tts_dexter.core.dispo import Dispositioner, dispo_method
+from tts_dexter.core.dispo import Dispositioner, Disposition, DISPO_SEVERITY, dispo_method
 
 class BulkEvrDispositioner(Dispositioner):
     """
@@ -70,3 +70,51 @@ class BulkEvrDispositioner(Dispositioner):
                         evr.new_dispo().custom(ruledef['Headline'], ruledef['Disposition Message'])                
             else:
                 raise Exception(f"Condition \"{ruledef['Condition']}\" is not understood.")
+
+
+class DfBulkEvrDispositioner(Dispositioner):
+    """
+    DataFrame-aware dispositioner for EVRs.
+
+    Operates on a TtsDataFrame registered under the ``'evr_frame'`` data key.
+    Reads rules from :attr:`CSV_FILEPATH` and applies matching dispositions by
+    iterating all rows and checking each rule inline.  This avoids the
+    parent-frame tracking issue that would arise from filtering the frame before
+    iterating (rows from a filtered sub-frame point to the sub-frame, not the
+    original).
+
+    Supports the same ``Condition`` types as :class:`BulkEvrDispositioner`:
+    ``nameMatch``, ``nameRegex``, ``messageRegex``, and ``bothRegex``.
+    """
+    HANDLER_MAP = {}
+    CSV_FILEPATH = None
+
+    @dispo_method(['evr_frame'])
+    def dispo_from_frame(self, frame):
+        with open(self.CSV_FILEPATH, mode='r', newline='', encoding='utf-8-sig') as f:
+            ruledefs = list(csv.DictReader(f))
+
+        for _, row in frame.iterrows():
+            for ruledef in ruledefs:
+                condition = ruledef['Condition']
+                if condition == 'nameMatch':
+                    if row['name'] == ruledef['Name']:
+                        row.new_dispo().custom(ruledef['Headline'], ruledef['Disposition Message'])
+                elif condition == 'nameRegex':
+                    if re.fullmatch(ruledef['Name'], row['name']):
+                        row.new_dispo().custom(ruledef['Headline'], ruledef['Disposition Message'])
+                elif condition == 'messageRegex':
+                    if row['name'] == ruledef['Name'] and re.fullmatch(ruledef['Message Regex'], row['message']):
+                        row.new_dispo().custom(ruledef['Headline'], ruledef['Disposition Message'])
+                elif condition == 'bothRegex':
+                    if re.match(ruledef['Name'], row['name']) and re.match(ruledef['Message Regex'], row['message']):
+                        row.new_dispo().custom(ruledef['Headline'], ruledef['Disposition Message'])
+                else:
+                    raise Exception(f"Condition \"{condition}\" is not understood.")
+
+            if len(row.dispositions) == 0:
+                row.add_dispo(
+                    Disposition.from_definition(
+                        'No Autodisposition', 'Manual Disposition Needed', DISPO_SEVERITY.UNKNOWN
+                    )
+                )
